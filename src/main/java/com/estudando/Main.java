@@ -27,7 +27,19 @@ public class Main {
 
             System.out.println("initialed database");
         } else {
+            // print content of found record
             System.out.println(p);
+
+            /**
+             * Removing records
+             * I'm Learning about monitored entities
+             */
+            for (int id = 1; id <= 3; id++) {
+                p = em.find(Pessoa.class, id);
+                em.getTransaction().begin();
+                em.remove(p);
+                em.getTransaction().commit();
+            }
         }
 
         em.close();
